@@ -1,0 +1,183 @@
+  <!doctype html>
+
+<!--[if lte IE 8]><SCRIPT src='source/excanvas.js'></script><![endif]--><SCRIPT src='../ChartNew.js'></script>
+<SCRIPT src='../Add-ins/shapesInChart.js'></script>
+
+<SCRIPT>
+
+defCanvasWidth=1200;
+defCanvasHeight=600;
+
+var mydata2 = {
+     labels : ["2014"],
+     datasets : [
+           {
+      data : [30],
+      fillColor : "#D97041",
+      title : "data1",
+      fontSize:32,
+      myInGraphData : ["qwe"]
+           },
+           {
+      data : [30],
+      fillColor : "#D97041",
+      title : "data1",
+      myInGraphData : ["ewq"]
+           },
+           {
+      data : [30],
+      fillColor : "#D97041",
+      title : "data1",
+      myInGraphData : ["weq"]
+           },
+
+]
+};
+
+
+var cntshapes=0;
+var paddingval=3;
+var spaceval=0.05;
+
+
+var tot=[];
+for(var i=0;i<mydata2.datasets.length;i++) {
+	for(j=0;j<mydata2.labels.length;j++) {
+		if(i==0)tot[j]=0;
+		if((1*mydata2.datasets[i].data[j])>0)tot[j]+=1*mydata2.datasets[i].data[j];
+	}
+}
+
+var startAngle;
+var align, baseline;
+
+mydata2.shapesInChart=[];
+
+//for(j=0;j<1;j++)
+var objectToDraw;
+
+for(j=0;j<mydata2.labels.length;j++)
+{
+	startAngle=90;
+	for(var i=0;i<mydata2.datasets.length;i++) {
+		if(!((1*mydata2.datasets[i].data[j])>0))continue;
+
+
+		startAngle-= 180*((1*mydata2.datasets[i].data[j])/tot[j]);
+
+		if (startAngle==90 || startAngle==-90 || startAngle==-270)align="center";
+		else if (startAngle < -90)align="right";
+		else align="left"
+		if (startAngle==0 || startAngle==-180)baseline="middle";
+		else if (startAngle <0 && startAngle > -180)baseline="top";
+		else baseline="bottom";
+		startAngle-= 180*((1*mydata2.datasets[i].data[j])/tot[j]);
+
+		if(typeof mydata2.datasets[i].myInGraphData=="object") {
+			objectToDraw=mydata2.datasets[i].myInGraphData[Math.min(j,mydata2.datasets[i].myInGraphData.length-1)];
+		}else if(typeof mydata2.datasets[i].myInGraphData!="undefined")objectToDraw=mydata2.datasets[i].myInGraphData;
+		else objectToDraw=undefined;
+
+		if(typeof objectToDraw == "string") {
+			if(objectToDraw.toUpperCase().indexOf(".JPG")>=0 || objectToDraw.toUpperCase().indexOf(".GIF")>=0) {
+				mydata2.shapesInChart[cntshapes] = {
+				position : "INCHART",
+				shape: "IMAGE",
+				imagesrc : "" + objectToDraw,
+				x1:  i,
+				y1:  1,
+				posj : j,
+				paddingX1 : 0,
+				paddingY1 : +10,
+				imageAlign : align,
+				imageBaseline : baseline,
+				imageWidth : 50,
+				imageHeight : 50,
+				iter : "last"
+				};
+			} else {
+				mydata2.shapesInChart[cntshapes] = {
+				position : "INCHART",
+				shape: "Text",
+				text : "" + objectToDraw,
+				x1:  i,
+				y1:  1+spaceval,
+				posj : j,
+				paddingX1 : 0,
+				paddingY1 : 0,
+				textAlign : align,
+				textBaseline : baseline,
+				fontColor : "black",
+				fontStyle : "normal",
+				fontSize : 12,
+				fontFamily : "'Arial'",
+				iter : "last"
+				};
+			}
+			cntshapes++;
+
+		} else if(typeof mydata2.datasets[i].data[j] != "undefined") {
+			mydata2.shapesInChart[cntshapes] = {
+			position : "INCHART",
+			shape: "Text",
+			text : "" + mydata2.datasets[i].data[j],
+			x1:  i,
+			y1:  1+spaceval,
+			posj : j,
+			paddingX1 : 0,
+			paddingY1 : 0,
+			textAlign : align,
+			textBaseline : baseline,
+			fontColor : "black",
+			fontStyle : "normal",
+			fontSize : 12,
+			fontFamily : "'Arial'",
+			iter : "last"
+			};
+			cntshapes++;
+
+		}
+
+	}
+}
+var startWithDataset =1;
+var startWithData =1;
+
+var opt = {
+      canvasBorders : true,
+      canvasBordersWidth : 3,
+      canvasBordersColor : "black",
+      graphTitle : "my inGraphData",
+      graphMin : 0,
+      legend : true,
+      inGraphDataShow : false,    // -> ingraphData are written through shapes in the chart
+      annotateDisplay : true,
+      graphTitleFontSize: 18,
+      endDrawDataFunction: drawShapes
+
+}
+
+
+
+</SCRIPT>
+
+
+<html>
+  <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+	<head>
+		<title>Demo ChartNew.js</title>
+	</head>
+	<body>
+
+  <center>
+    <FONT SIZE=6><B>Demo of ChartNew.js !</B></FONT>    <BR>
+
+    <script>
+
+    document.write("<canvas id=\"canvas_Doughnut\" height=\""+defCanvasHeight+"\" width=\""+defCanvasWidth+"\"></canvas>");
+window.onload = function() {
+    var myLine = new Chart(document.getElementById("canvas_Doughnut").getContext("2d")).Doughnut(mydata2,opt);
+}
+    </script>
+  </body>
+</html>

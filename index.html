@@ -1,0 +1,340 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>Sung-Yuan Chen</title>
+	<script src="js/jquery-1.12.3.min.js"></script>
+	<script src="js/jquery-ui-1.12.0/jquery-ui.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<link href="css/bootstrap.min.css" rel="stylesheet">
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">		
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<link rel="stylesheet" type="text/css" href="min-800.css">
+	<script src="createChart.js"></script>
+	<script src="animation.js"></script>
+	<script src="loader.js"></script>	
+
+	<script>
+			$(document).ready(function(){
+				$("#backHome").click(function() {
+					scrollToAnchor('showIntro');
+				});
+			});	
+	</script>	
+</head>
+
+<body>
+
+
+	<a name="showIntro"></a>
+	<div class="intro">
+		<div class="inner">
+			<div class="content">
+				<div id="showDonut">
+					<div class="jumbotron" id="donutJumbotron">
+						<div id="donutCanvas">								
+							<canvas id="donut" ></canvas>  
+							<script src="Chart.js-2.1.6/ver3/ChartNew.js"></script>
+							<script src='Chart.js-2.1.6/ver3/Add-ins/shapesInChart.js'></script>
+							<script src="newDonut.js"></script>	
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	
+	<a name="showRadar"></a>
+	<div id="showIntro">
+		<div class="introPhoto"></div>
+		<div class="introText">
+			<div class="jumbotron" id="introJumbotron">
+				<div style="margin-top: -3%"> 
+					<div style="padding:1% 2%;">
+						<h4>What I am pursuing for the ultimate goal</h4>
+						<i>Lead the change, Change the lead</i>
+					</div>
+					<div style="padding:1% 2%;">
+						<h4>Most impressive achievement</h4>
+						<i>1. Developed the software to enable
+						credit card processing for the unattended kiosks.<br />
+						2. Applied Google SEO and web development to propose to my fiancee.
+						(Undoubtedly with a result of "YES")</i>
+					</div>
+					<div style="padding:1% 2%;">
+						<h4>What I do</h4>
+						<i>I am a Full Stack Engineer. Currently, I am using C#, .NET, JavaScript, jQuery, 
+						and PostgreSQL to develop the software for the lockers' kiosks and mobile charging stations.
+						I love using Python for data analysis and dealing algorithm problems. 
+						</i>
+					</div>
+					<div style="padding:1% 2%;">
+						<h4>My secret power</h4>
+						<i><!--I can also do data analyst's job. I helped the company to make an
+						 purchase decision by using data analytics.-->
+						 <a style="cursor:pointer;" onclick=scrollToAnchor('showSocial')>Contact Me</a> to request more information.
+						 </i>
+					</div>								
+					<div style="padding:1% 2%;">
+						<h4>Location</h4>
+						<i>New York</i>
+					</div>				
+				</div>			
+			</div>
+		</div>
+	</div>
+	
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.1.6/Chart.bundle.js"></script>
+	<div id="showTimeline">
+		<div id="exp">Experiences</div>
+		<div id="timeline"></div>
+		<div id="expList">
+			<ul style="list-style-type:none; font-style:italic;">
+				<li>BS in Electrical Engineering @ Merrimack College</li>
+				<li>ME in Computer Engineering @ Stevens Institute of Technology</li>
+				<li>Software Developer @ Tiburon Lockers</li>
+			</ul>
+		</div>
+	</div>
+	
+    <div id="showRadar">
+        <canvas id="radar"></canvas>
+    </div>
+	
+	<a name="showPie"></a>
+    <div id="showPie">
+    	<div id="piechart"></div>
+    </div>	
+    
+	
+	<a name="showBar"></a>
+<div id="showPortfolio" class="container">
+  <div class="page-header">
+    <h1 class="text-center">Projects</h1>
+  </div>
+  <p class="lead text-center">   </p>
+  <div class="container">
+    <div class="row stylish-panel">
+      <div class="col-md-4">
+        <div>
+          <img src="pj1.jpeg" width="200" height="200" class="img-circle img-thumbnail">
+          <h2>ECE Big Data Challenge</h2>
+          <p>Awarded Second Place</p>
+          <p><i>Stevens Institute of Technology</i></p>
+          <p>The goal of challenge is to analyze the negative or positive comments from TripAdvisor
+          </p>
+          <a href="https://github.com/roneyuan/TripAdvisor_Review_Analysis" class="btn btn-primary" title="code">Check out the code!</a>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div>
+          <img src="pj2.jpg" class="img-circle img-thumbnail">
+          <h2>Friend Recommendations</h2>
+          <p><i>Stevens Institute of Technology</i></p>
+          <p>The feature of the website crawls the data from Craigslist. Then it provides the recommendation for users based on their criteria.
+          </p>
+          <a href="https://github.com/roneyuan/FriendRecommender" class="btn btn-primary" title="See more">Check out the code!</a>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div>
+          <img src="pj3.jpg" class="img-circle img-thumbnail">
+          <h2>Object Recognition</h2>
+          <p><i>Stevens Institute of Technology</i></p>
+          <p>Use MATLAB and applied mathematical method to analyze the pictures with four categories (car, bike, person, and misc.).
+          </p>
+          <a href="https://github.com/roneyuan/Object-Recognition" class="btn btn-primary" title="See more">Check out the code!</a>
+        </div>
+      </div>
+    </div>
+    <div class="row stylish-panel">
+      <div class="col-md-4">
+        <div>
+          <img src="pj4.jpeg" class="img-circle img-thumbnail">
+          <h2>Distributed Hash Table</h2>
+          <p><i>Stevens Institute of Technology</i></p>
+          <p>Debugged from constructed code and deployed on Amazon EC2 Services. The program simulates the theory of distributed system.
+          </p>
+          <a href="https://github.com/roneyuan/dht-standalone" class="btn btn-primary" title="See more">Check out the code!</a>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div>
+          <img src="pj5.jpeg" class="img-circle img-thumbnail">
+          <h2>Java Swing Calculator</h2>
+          <p><i>Stevens Institute of Technology</i></p>
+          <p>Build a calculator using Java and Swing package.
+          </p>
+          <a href="https://github.com/roneyuan/Java-Swing-Calculator" class="btn btn-primary" title="See more">Check out the code!</a>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div>
+          <img src="pj6.jpeg" class="img-circle img-thumbnail">
+          <h2>Simulation of Shopping System</h2>
+          <p><i>Boston University</i></p>
+          <p>Build a shopping list system using Core Java
+          </p>
+          <a href="https://github.com/roneyuan/Simulation-of-Shopping-List-System" class="btn btn-primary" title="See more">Check out the code!</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+	
+<a name="showProgress"></a>
+<div class="row">
+	<div id="showProgress">
+		<h1 align="center">Skills - Path toward master</h1>
+		<h2 style="margin:50px;"> Languages: </h2>
+		
+		<h3>C++</h3>	
+		<div class="progress">
+			<div class="progress-bar progress-bar-warning progress-bar-striped active" style="width: 50%; min-width: 2em;">
+				Intermediate
+			</div>
+		</div>
+		<br>
+		
+		<h3>C#</h3>
+		<div class="progress">	
+			<div class="progress-bar progress-bar-striped active" style="width: 75%; min-width: 2em;">
+				Advanced
+			</div>
+		</div>
+		<br>
+		
+		<h3>Java</h3>	
+		<div class="progress">
+			<div class="progress-bar progress-bar-warning progress-bar-striped active" style="width: 50%; min-width: 2em;">
+				Intermediate
+			</div>
+		</div>
+		<br>
+		
+		<h3>Javascript</h3>	
+		<div class="progress">
+			<div class="progress-bar progress-bar-striped active" style="width: 75%; min-width: 2em;">
+				Advanced
+			</div>
+		</div>
+		<br>
+		
+		<h3>Python</h3>	
+		<div class="progress">
+			<div class="progress-bar progress-bar-striped active" style="width: 75%; min-width: 2em;">
+				Advanced
+			</div>
+		</div>
+		<br>
+		
+		<h3>Ruby</h3>	
+		<div class="progress">
+			<div class="progress-bar progress-bar-success progress-bar-striped active" style="width: 25%; min-width: 2em;">
+				Beginner
+			</div>
+		</div>
+		<br>
+		
+		<h3>Swift</h3>	
+		<div class="progress">
+			<div class="progress-bar progress-bar-success progress-bar-striped active" style="width: 25%; min-width: 2em;">
+				Beginner
+			</div>
+		</div>	
+		
+		
+		<h2 style="margin:50px">Frameworks:</h2>			
+		<h3>.NET</h3>	
+		<div class="progress">
+			<div class="progress-bar progress-bar-warning progress-bar-striped active" style="width: 50%; min-width: 2em;">
+				Intermediate
+			</div>
+		</div>	
+		<br>
+		
+		<h3>jQuery</h3>	
+		<div class="progress">
+			<div class="progress-bar progress-bar-warning progress-bar-striped active" style="width: 50%; min-width: 2em;">
+				Intermediate
+			</div>
+		</div>
+		<br>
+		
+		<h3>RoR</h3>	
+		<div class="progress">
+			<div class="progress-bar progress-bar-success progress-bar-striped active" style="width: 25%; min-width: 2em;">
+				Beginner
+			</div>
+		</div>
+		<br>
+		
+		<h3>Django</h3>	
+		<div class="progress">
+			<div class="progress-bar progress-bar-success progress-bar-striped active" style="width: 25%; min-width: 2em;">
+				Beginner
+			</div>
+		</div>
+		<br>
+		
+		<h3>MEAN</h3>	
+		<div class="progress">
+			<div class="progress-bar progress-bar-success progress-bar-striped active" style="width: 25%; min-width: 2em;">
+				Beginner
+			</div>
+		</div>
+		<br>		
+				
+		<h2 style="margin:50px">Databases:</h2> 				
+		<h3>MySQL</h3>	
+		<div class="progress">
+			<div class="progress-bar progress-bar-warning progress-bar-striped active" style="width: 50%; min-width: 2em;">
+				Intermediate
+			</div>
+		</div>		
+		<br>
+		
+		<h3>PostgreSQL</h3>	
+		<div class="progress">
+			<div class="progress-bar progress-bar-warning progress-bar-striped active" style="width: 50%; min-width: 2em;">
+				Intermediate
+			</div>
+		</div>
+		<br>
+		
+		<h3>MangoDB</h3>	
+		<div class="progress">
+			<div class="progress-bar progress-bar-success progress-bar-striped active" style="width: 25%; min-width: 2em;">
+				Beginner
+			</div>
+		</div>						
+	</div>
+</div>
+
+
+<div id="social" class="row">	
+<a name="showSocial"></a>
+	<div id="findme">	
+		<div>
+			<div id="me" class="jumbotron">
+				<a class="fa fa-facebook fa-5x" href="https://www.facebook.com/thomaschentw"></a>
+
+				<a class="fa fa-linkedin fa-5x" href="https://www.linkedin.com/pub/sung-yuan-chen"></a>
+
+				<a class="fa fa-github fa-5x" href="https://github.com/roneyuan"></a>	
+
+				<a class="fa fa-angellist fa-5x" href="https://angel.co/sung-yuan-chen"></a>						
+				
+				<a class="fa fa-envelope-o fa-5x">  </a><i>sungyuanc@gmail.com</i>					
+			</div>
+		</div>		
+	</div>
+	
+	<div id="back">
+		<a id="backHome" class="fa fa-home fa-5x"></a>
+	</div>
+</div>
+</body>
+</html>
